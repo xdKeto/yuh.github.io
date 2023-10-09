@@ -11,7 +11,7 @@ function addNotes() {
               <div class="card-body">
                    <div class="d-flex justify-content-between">
                        <h5 class="card-title" id="cardTitle">${noteTitle}</h5>
-                       <button type="button" class="btn-close" onclick="deleteNotes(event)"></button>
+                       <button type="button" class="btn-close" onclick="deleteNotes(event, '${noteId}')"></button>
                    </div>
                    <p class="card-text" id="cardText">${noteText}</p>
               </div>
@@ -39,16 +39,16 @@ function addNotes() {
 
   $("#note-title").val("");
   $("#note-text").val("");
-  $("note-color").val("-1");
+  $("note-color").val('warning');
 
   $("#my-modal").modal("hide");
 
   noteIdCounter++;
 }
 
-function deleteNotes(event) {
+function deleteNotes(event, noteId) {
   event.stopPropagation();
-  $(event.target).closest("#my-note").remove();
+  $(event.target).closest(`#${noteId}`).remove();
 }
 
 function editNotes() {
